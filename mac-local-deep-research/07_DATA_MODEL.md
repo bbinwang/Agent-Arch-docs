@@ -1375,3 +1375,5 @@ def get_stale_researches(timeout_seconds: int = 300) -> List[str]:
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

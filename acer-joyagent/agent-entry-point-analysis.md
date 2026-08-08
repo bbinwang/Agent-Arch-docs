@@ -135,7 +135,3 @@ Java ExecutorAgent 工具调用（HTTP）
   → POST /auto_analysis | /nl2sql | /deepsearch | /table_rag
     → AutoAnalysisAgent.run() | NL2SQLAgent.run() | DeepSearch.run() | TableRAGAgent.run()
 ```
-
----
-
-☕️ 制作不易，请我喝咖啡☕️关注我➕

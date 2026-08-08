@@ -311,3 +311,5 @@ DiskCache 是性能优化的关键组件。由于 LlamaParse API 调用是异步
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../../res/promotion.jpg)

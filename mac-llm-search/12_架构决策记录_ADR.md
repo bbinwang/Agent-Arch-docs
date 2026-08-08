@@ -270,3 +270,5 @@ chain = create_stuff_documents_chain(llm=llm.model, prompt=llm.prompt)
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

@@ -113,3 +113,5 @@ Memmy 暴露四类 API：**Memory Runtime API**（:18960）、**桌面本地 API
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

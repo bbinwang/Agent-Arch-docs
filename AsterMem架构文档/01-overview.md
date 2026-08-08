@@ -217,3 +217,5 @@ kept = [c for c in candidates if c.score >= cutoff]
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

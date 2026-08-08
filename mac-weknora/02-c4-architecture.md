@@ -751,3 +751,5 @@ AgentEngine 是**无状态引擎模式**的典型实现——引擎本身不维�
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

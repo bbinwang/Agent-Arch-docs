@@ -701,3 +701,5 @@ qualitative_chunks_retrieval_workflow_app = create_qualitative_retrieval_book_ch
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

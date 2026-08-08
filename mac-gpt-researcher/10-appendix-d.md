@@ -548,3 +548,5 @@ pytest tests/ --cov=gpt_researcher --cov-report=html
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

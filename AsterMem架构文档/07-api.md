@@ -351,3 +351,5 @@ AsterMem 内置 MCP（Model Context Protocol）Server，允许 MCP 兼容的 AI 
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

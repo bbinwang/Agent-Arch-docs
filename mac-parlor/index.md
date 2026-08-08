@@ -57,3 +57,5 @@ Parlor 是一个**完全运行在单台机器本地**(目标硬件:Apple Silicon
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

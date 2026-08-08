@@ -175,3 +175,5 @@ incomplete 轮安静 2.5s → flush。一次 hold 一次 flush;`serverHoldingAud
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../../res/promotion.jpg)

@@ -562,3 +562,5 @@ Discord：打开任务论坛 — 必须存在带有 `[TODO` 状态的线程。Sl
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

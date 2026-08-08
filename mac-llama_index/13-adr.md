@@ -412,3 +412,5 @@ llama_index/                    # 命名空间（无 __init__.py）
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

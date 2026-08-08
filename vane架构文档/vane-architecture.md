@@ -920,3 +920,5 @@ speed/balanced 模式强依赖嵌入模型进行去重。如果嵌入模型不�
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

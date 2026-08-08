@@ -136,3 +136,5 @@ npm run package:win:x64       # Windows x64
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

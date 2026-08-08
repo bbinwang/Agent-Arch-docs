@@ -458,3 +458,5 @@ LlamaIndex 是一个设计精良的 **LLM 应用数据框架**，其核心竞争
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

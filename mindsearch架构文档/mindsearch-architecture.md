@@ -945,3 +945,5 @@ ReactFlow 渲染搜索图 DAG，用户可以：
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

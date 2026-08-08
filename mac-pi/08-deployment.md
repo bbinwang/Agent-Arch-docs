@@ -315,3 +315,5 @@ pre-commit hook 阻止意外 lockfile 提交，除非设置 `PI_ALLOW_LOCKFILE_C
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

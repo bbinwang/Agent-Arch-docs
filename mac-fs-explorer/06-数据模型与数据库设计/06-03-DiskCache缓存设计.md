@@ -127,3 +127,5 @@ cache = Cache(directory="tmp/cache", size_limit=10**9)  # 1GB
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../../res/promotion.jpg)

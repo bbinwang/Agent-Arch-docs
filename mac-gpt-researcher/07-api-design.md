@@ -896,3 +896,5 @@ ws.onmessage = (event) => {
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

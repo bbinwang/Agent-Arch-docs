@@ -177,3 +177,5 @@ FastAPI 服务端(每连接一个会话循环)
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

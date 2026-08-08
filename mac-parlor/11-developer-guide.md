@@ -178,3 +178,5 @@ uv run python benchmarks/compare.py benchmarks/results/before.json benchmarks/re
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

@@ -858,3 +858,5 @@ def calculate_cost(prompt_tokens: int, completion_tokens: int, model: str) -> fl
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

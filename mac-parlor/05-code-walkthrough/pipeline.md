@@ -267,3 +267,5 @@ fire-and-discard:把前缀推过 llama-server 缓存(`cache_prompt=True` 在 `_c
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../../res/promotion.jpg)

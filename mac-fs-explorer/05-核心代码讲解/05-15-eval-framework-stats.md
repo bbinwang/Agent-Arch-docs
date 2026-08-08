@@ -78,3 +78,5 @@ def create_markdown_report(eval_stats: EvalStats, num_tasks: int) -> str:
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../../res/promotion.jpg)

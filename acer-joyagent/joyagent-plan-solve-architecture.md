@@ -527,7 +527,3 @@ Frontend          GenieController     PlanSolveHandler    PlanningAgent    Execu
 | `service/impl/PlanSolveHandlerImpl.java` | **核心编排器** - Plan-Solve 主循环 |
 | `handler/PlanSolveAgentResponseHandler.java` | SSE 响应处理器 |
 | `config/GenieConfig.java` | 全局配置中心 |
-
----
-
-☕️ 制作不易，请我喝咖啡☕️关注我➕

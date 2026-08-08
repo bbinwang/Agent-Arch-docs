@@ -482,3 +482,5 @@ Settings.llm.rate_limiter = RateLimiter(rate_limit=10, time_period=1.0)
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

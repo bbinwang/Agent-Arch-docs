@@ -169,3 +169,5 @@ MODEL=e2b uv run pytest                    # 更快迭代
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

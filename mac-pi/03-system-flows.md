@@ -603,3 +603,5 @@ Pi 的扩展系统可以加载任意 TypeScript 代码（通过 jiti）。当扩
 ---
 
 ☕️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)
