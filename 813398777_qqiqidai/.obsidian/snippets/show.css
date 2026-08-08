@@ -1,0 +1,3 @@
+body {
+  --file-line-width: 1500px;   /* 改成你想要的宽度，比如 800px、1000px、70rem 等 */
+}
