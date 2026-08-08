@@ -12,7 +12,7 @@
 
 GitHub 不支持渲染 C4 图表，在 GitHub 上看不到架构图是正常现象。部分 Mermaid 图片存在语法错误渲染问题，持续修复中。
 
-如果你期望收录你关注的 Agent 相关项目，可以邮件发送 Git 仓库地址：[qhwangbin3935@agent.qq.com](mailto:qhwangbin3935@agent.qq.com)
+如果你期望收录你关注的 Agent 相关项目，可以邮件发送 Git 仓库地址：[dabing2026@agent.qq.com](mailto:dabing2026@agent.qq.com)
 
 ---
 
