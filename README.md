@@ -506,13 +506,6 @@ GitHub 不支持渲染 C4 图表，在 GitHub 上看不到架构图是正常现�
 
 ---
 
-## 🔗 相关资源
-
-- [飞书项目汇总文档](https://my.feishu.cn/docx/YaZVdthNZohjtox0PubcyfH5nif)
-- [百度网盘源目录](https://pan.baidu.com/s/1xxx)（请替换为实际链接）
-
----
-
 > **生成日期**: 2026-08-08  
 > **文档版本**: v1.0  
 > **维护者**: wangbin
