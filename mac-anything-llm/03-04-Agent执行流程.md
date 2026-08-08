@@ -245,6 +245,6 @@ aibitat 通过 `EventEmitter` 向 WebSocket 推送实时事件：
 
 ---
 
-☕️ 制作不易，请我喝咖啡☕️关注我➕
+# ❤️ 制作不易，请我喝咖啡☕️关注我➕
 
 ![promotion](../res/promotion.jpg)

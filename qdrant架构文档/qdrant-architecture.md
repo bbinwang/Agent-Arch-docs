@@ -665,6 +665,6 @@ Linux 平台支持 `async_scorer`，利用 io_uring 进行异步 rescoring，进
 
 ---
 
-☕️ 制作不易，请我喝咖啡☕️关注我➕
+# ❤️ 制作不易，请我喝咖啡☕️关注我➕
 
 ![promotion](../res/promotion.jpg)

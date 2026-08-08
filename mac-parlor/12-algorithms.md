@@ -223,6 +223,6 @@ Parlor 重叠:总延迟 ≈ TTFFirstSentence(P1 首句) + TTS(首句)
 
 ---
 
-☕️ 制作不易，请我喝咖啡☕️关注我➕
+# ❤️ 制作不易，请我喝咖啡☕️关注我➕
 
 ![promotion](../res/promotion.jpg)

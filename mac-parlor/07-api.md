@@ -163,6 +163,6 @@ Parlor 服务端 ↔ llama-server 子进程用 **OpenAI 兼容 `/v1/chat/complet
 
 ---
 
-☕️ 制作不易，请我喝咖啡☕️关注我➕
+# ❤️ 制作不易，请我喝咖啡☕️关注我➕
 
 ![promotion](../res/promotion.jpg)

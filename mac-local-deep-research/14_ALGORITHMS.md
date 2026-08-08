@@ -1255,6 +1255,6 @@ src/local_deep_research/security/dns_resolver.py
 
 ---
 
-☕️ 制作不易，请我喝咖啡☕️关注我➕
+# ❤️ 制作不易，请我喝咖啡☕️关注我➕
 
 ![promotion](../res/promotion.jpg)

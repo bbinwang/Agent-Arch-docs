@@ -53,6 +53,6 @@ def cache_texts(base_dir=None, cache_directory=None, texts_directory=None) -> No
 
 ---
 
-☕️ 制作不易，请我喝咖啡☕️关注我➕
+# ❤️ 制作不易，请我喝咖啡☕️关注我➕
 
 ![promotion](../../res/promotion.jpg)

@@ -123,6 +123,6 @@ return log_spec.astype(float32)                   # (80, 800),约 [-1,1]
 
 ---
 
-☕️ 制作不易，请我喝咖啡☕️关注我➕
+# ❤️ 制作不易，请我喝咖啡☕️关注我➕
 
 ![promotion](../../res/promotion.jpg)

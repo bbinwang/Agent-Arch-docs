@@ -37,6 +37,6 @@ def contents_from_cache(cache_directory: str = "tmp/cache") -> dict[str, str]:
 
 ---
 
-☕️ 制作不易，请我喝咖啡☕️关注我➕
+# ❤️ 制作不易，请我喝咖啡☕️关注我➕
 
 ![promotion](../../res/promotion.jpg)
