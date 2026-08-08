@@ -24,8 +24,8 @@ GitHub 不支持渲染 C4 图表，在 GitHub 上看不到架构图是正常现�
 **GitHub**: [Tencent/WeKnora](https://github.com/Tencent/WeKnora)  
 **简介**: 腾讯开源的企业级知识库/RAG 问答引擎，以 RAG 快速问答、ReAct 智能体、Wiki 自动知识库三大核心能力著称。
 
-| 章节 | 一句话介绍 |
-|------|------------|
+| 章节 | 简介 |
+|------|------|
 | [第 1 章 项目概述](mac-weknora/01-project-overview.md) | WeKnora v0.7.1 技术架构文档总览，涵盖 RAG 问答、ReAct 智能体、Wiki 自动知识库三大核心能力 |
 | [第 2 章 C4 架构模型](mac-weknora/02-c4-architecture.md) | 使用 C4 模型从 Context/Container/Component/Code 四层完整建模 WeKnora 架构 |
 | [第 3 章 系统流程与时序图](mac-weknora/03-flows-sequence.md) | 10 个核心业务流程，每个配有 Mermaid 流程图/时序图与 300-500 字说明 |
