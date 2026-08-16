@@ -157,34 +157,34 @@ flowchart TD
 ## 3.3 工具执行流程（以 bash 为例）
 
 ```mermaid
-sequenceDiagram
-    participant Loop as AgentLoop
-    participant Before as beforeToolCall Hook
-    participant Bash as BashTool
-    participant After as afterToolCall Hook
-    participant Session as SessionManager
-
-    Loop->>Loop: emit tool_execution_start
-    Loop->>Before: call beforeToolCall(ctx, signal)
-    alt blocked
-        Before-->>Loop: { block: true, reason }
-        Loop->>Loop: create error tool result
-    else allowed
-        Before-->>Loop: undefined
-        Loop->>Bash: execute(toolCallId, params, signal, onUpdate)
-        Bash->>Bash: createLocalBashOperations()
-        Bash->>Bash: executeBashWithOperations()
-        Bash-->>Loop: AgentToolResult
-        Loop->>After: call afterToolCall(ctx, signal)
-        alt override
-            After-->>Loop: { content, details, isError }
-            Loop->>Loop: merge overrides
-        else pass-through
-            After-->>Loop: undefined
-        end
-    end
-    Loop->>Loop: emit tool_execution_end
-    Loop->>Session: appendEntry(tool_result_entry)
+sequenceDiagram                                                                                                                           
+      participant AgentLoop                                                                     
+      participant Before as beforeToolCall Hook
+      participant Bash as BashTool                                                                                                          
+      participant After as afterToolCall Hook
+      participant Session as SessionManager                                                                                                 
+                                                                                                                                            
+      AgentLoop->>AgentLoop: emit tool_execution_start                                                                                      
+      AgentLoop->>Before: call beforeToolCall(ctx, signal)                                                                                  
+      alt blocked                                                                                                                           
+          Before-->>AgentLoop: { block: true, reason }                                                                                      
+          AgentLoop->>AgentLoop: create error tool result                                                                                   
+      else allowed                                                                                                                          
+          Before-->>AgentLoop: undefined                                                                                                    
+          AgentLoop->>Bash: execute(toolCallId, params, signal, onUpdate)                                                                   
+          Bash->>Bash: createLocalBashOperations()                                                                                          
+          Bash->>Bash: executeBashWithOperations()                                                                                          
+          Bash-->>AgentLoop: AgentToolResult                                                                                                
+          AgentLoop->>After: call afterToolCall(ctx, signal)                                                                                
+          alt override                                                                                                                      
+              After-->>AgentLoop: { content, details, isError }                                                                             
+              AgentLoop->>AgentLoop: merge overrides                                                                                        
+          else pass-through                                                                                                                 
+              After-->>AgentLoop: undefined                                                                                                 
+          end                                                                                                                               
+      end                                                                                                                                   
+      AgentLoop->>AgentLoop: emit tool_execution_end                                                                                        
+      AgentLoop->>Session: appendEntry(tool_result_entry)
 ```
 
 ### 流程详解
@@ -320,37 +320,37 @@ LLM 有上下文窗口限制（如 200K tokens）。随着对话增长，消息�
 ## 3.6 扩展系统加载与运行流程
 
 ```mermaid
-sequenceDiagram
-    participant Main as main.ts
-    participant RL as ResourceLoader
-    participant EL as ExtensionLoader
-    participant Ext as Extension (user code)
-    participant ER as ExtensionRunner
-    participant Loop as AgentLoop
-
-    Main->>RL: createAgentSessionServices()
-    RL->>EL: discoverAndLoadExtensions(paths)
-    EL->>EL: 扫描 .pi/extensions 目录
-    EL->>EL: 加载 --extensions 参数
-    EL->>EL: 加载内置扩展
-    loop 每个扩展文件
-        EL->>Ext: import(extensionPath)
-        Ext-->>EL: ExtensionFactory
-        EL->>Ext: factory(ctx) → Extension
-        Ext-->>EL: Extension instance
-    end
-    EL-->>RL: LoadExtensionsResult
-    RL-->>Main: services
-
-    Main->>ER: new ExtensionRunner(extensions)
-    ER->>ER: 收集 tools/commands/events
-
-    Loop->>ER: emit(beforeAgentStart)
-    ER->>Ext: ext.beforeAgentStart?.(event)
-    Loop->>ER: emit(toolCall event)
-    ER->>Ext: ext.beforeToolCall?.(event)
-    Loop->>ER: emit(message event)
-    ER->>Ext: ext.onMessage?.(event)
+sequenceDiagram                                                                                                                           
+      participant Main as main.ts                                                                                                           
+      participant RL as ResourceLoader                                                                                                      
+      participant EL as ExtensionLoader                                                                                                     
+      participant Ext as Extension (user code)                                                                                              
+      participant ER as ExtensionRunner                                                                                                     
+      participant AgentLoop                                                                                                                 
+                                                                                                                                            
+      Main->>RL: createAgentSessionServices()                                                                                               
+      RL->>EL: discoverAndLoadExtensions(paths)                                                                                             
+      EL->>EL: 扫描 .pi/extensions 目录                                                                                                     
+      EL->>EL: 加载 --extensions 参数                                                                                                       
+      EL->>EL: 加载内置扩展                                                                                                                 
+      loop 每个扩展文件                                                                                                                     
+          EL->>Ext: import(extensionPath)                                                                                                   
+          Ext-->>EL: ExtensionFactory                                                                                                       
+          EL->>Ext: factory(ctx) → Extension                                                                                                
+          Ext-->>EL: Extension instance                                                                                                     
+      end                                                                                                                                   
+      EL-->>RL: LoadExtensionsResult                                                                                                        
+      RL-->>Main: services                                                                                                                  
+                                                                                                                                            
+      Main->>ER: new ExtensionRunner(extensions)
+      ER->>ER: 收集 tools/commands/events                                                                                                   
+                                                                                                                                            
+      AgentLoop->>ER: emit(beforeAgentStart)
+      ER->>Ext: ext.beforeAgentStart?.(event)                                                                                               
+      AgentLoop->>ER: emit(toolCall event)                                                                                                  
+      ER->>Ext: ext.beforeToolCall?.(event)
+      AgentLoop->>ER: emit(message event)                                                                                                   
+      ER->>Ext: ext.onMessage?.(event)
 ```
 
 ### 流程详解

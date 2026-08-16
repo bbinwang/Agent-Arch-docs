@@ -60,71 +60,71 @@ C4Context
 ## 2.3 Container 图（容器视图）
 
 ```mermaid
-C4Container
-  title Pi Agent Harness - Container View
-
-  Person(dev, "Developer", "终端开发者")
-
-  System_Boundary(pi_system, "Pi Agent Harness") {
-    Container(cli, "pi CLI", "Node.js / Bun", "命令行入口：参数解析、模式分发")
-    Container(sdk, "SDK", "TypeScript", "程序化 API：createAgentSession, createAgentSessionRuntime")
-    Container(rpc, "RPC Entry", "JSONL over stdio", "JSONL 协议入口：命令/事件/UI 桥接")
-
-    Container_Boundary(coding_agent, "pi-coding-agent Package") {
-      Container(interactive, "Interactive Mode", "TUI", "全屏交互模式")
-      Container(print, "Print Mode", "stdout", "非交互文本输出模式")
-      Container(rpc_mode, "RPC Mode", "JSONL", "RPC 协议处理")
-    }
-
-    Container_Boundary(agent_core, "pi-agent-core Package") {
-      Container(agent, "Agent Runtime", "TypeScript", "agent 循环、状态管理、工具调度")
-      Container(harness, "Harness", "TypeScript", "会话存储、压缩、skills、system prompt")
-    }
-
-    Container_Boundary(ai_pkg, "pi-ai Package") {
-      Container(models, "Models", "TypeScript", "Provider 集合、模型发现、流式调用")
-      Container(auth, "Auth System", "TypeScript", "OAuth、API Key、凭证存储")
-      Container(providers, "Providers (43+)", "TypeScript", "各 provider 工厂实现")
-      Container(apis, "APIs (18)", "TypeScript", "各 API 协议实现")
-    }
-
-    Container_Boundary(tui_pkg, "pi-tui Package") {
-      Container(tui_engine, "TUI Engine", "TypeScript", "差分渲染、终端控制")
-      Container(tui_components, "TUI Components", "TypeScript", "编辑器、markdown、选择器、输入")
-      Container(native, "Native Modules", "C + N-API", "macOS/Windows 终端控制")
-    }
-
-    Container_Boundary(orchestrator_pkg, "pi-orchestrator Package") {
-      Container(supervisor, "Supervisor", "TypeScript", "多实例生命周期管理")
-      Container(ipc, "IPC", "TypeScript", "进程间通信协议")
-      Container(storage, "Storage", "TypeScript", "实例状态持久化")
-    }
-  }
-
-  ContainerDb(config, "Config", "~/.pi/", "settings.json, auth.json, models.json, trust, sessions")
-  ContainerDb(sessions, "Sessions", "*.jsonl", "会话 JSONL 文件（对话历史 + 元数据）")
-
-  Rel(dev, cli, "调用", "pi command")
-  Rel(dev, sdk, "调用", "import")
-  Rel(dev, rpc, "通信", "stdin/stdout JSONL")
-  Rel(cli, coding_agent, "启动")
-  Rel(sdk, coding_agent, "启动")
-  Rel(rpc, rpc_mode, "协议")
-
-  Rel(coding_agent, agent, "使用")
-  Rel(agent, models, "调用 LLM")
-  Rel(agent, auth, "获取凭证")
-  Rel(models, providers, "工厂创建")
-  Rel(models, protocols, "调用")
-  Rel(coding_agent, tui_engine, "渲染 UI")
-  Rel(coding_agent, harness, "会话管理")
-
-  Rel(supervisor, rpc_mode, "管理实例")
-  Rel(supervisor, ipc, "通信")
-  Rel(supervisor, storage, "持久化")
-
-  Rel(coding_agent, config, "读写")
-  Rel(harness, sessions, "读写")
+C4Container                                                                                            
+    title Pi Agent Harness - Container View
+                                                                                                         
+    Person(dev, "Developer", "终端开发者")                                                               
+                                                                                                         
+    System_Boundary(pi_system, "Pi Agent Harness") {                                                     
+      Container(cli, "pi CLI", "Node.js / Bun", "命令行入口：参数解析、模式分发")              
+      Container(sdk, "SDK", "TypeScript", "程序化 API：createAgentSession, createAgentSessionRuntime")   
+      Container(rpc, "RPC Entry", "JSONL over stdio", "JSONL 协议入口：命令/事件/UI 桥接")               
+                                                                                                         
+      Container_Boundary(coding_agent, "pi-coding-agent Package") {                                      
+        Container(interactive, "Interactive Mode", "TUI", "全屏交互模式")                                
+        Container(print, "Print Mode", "stdout", "非交互文本输出模式")                                   
+        Container(rpc_mode, "RPC Mode", "JSONL", "RPC 协议处理")                                         
+      }                                                                                                  
+                                                                                                         
+      Container_Boundary(agent_core, "pi-agent-core Package") {                                          
+        Container(agent, "Agent Runtime", "TypeScript", "agent 循环、状态管理、工具调度")      
+        Container(harness, "Harness", "TypeScript", "会话存储、压缩、skills、system prompt")             
+      }                                                                                                  
+                                                                                                         
+      Container_Boundary(ai_pkg, "pi-ai Package") {                                                      
+        Container(models, "Models", "TypeScript", "Provider 集合、模型发现、流式调用")                   
+        Container(auth, "Auth System", "TypeScript", "OAuth、API Key、凭证存储")                         
+        Container(providers, "Providers (43+)", "TypeScript", "各 provider 工厂实现")                    
+        Container(apis, "APIs (18)", "TypeScript", "各 API 协议实现")                                    
+      }                                                                                                  
+                                                                                                         
+      Container_Boundary(tui_pkg, "pi-tui Package") {                                                    
+        Container(tui_engine, "TUI Engine", "TypeScript", "差分渲染、终端控制")                          
+        Container(tui_components, "TUI Components", "TypeScript", "编辑器、markdown、选择器、输入")      
+        Container(native, "Native Modules", "C + N-API", "macOS/Windows 终端控制")                       
+      }                                                                                                  
+                                                                                                         
+      Container_Boundary(orchestrator_pkg, "pi-orchestrator Package") {                                  
+        Container(supervisor, "Supervisor", "TypeScript", "多实例生命周期管理")                
+        Container(ipc, "IPC", "TypeScript", "进程间通信协议")                                            
+        Container(storage, "Storage", "TypeScript", "实例状态持久化")                                    
+      }                                                                                                  
+    }                                                                                                    
+                                                                                                         
+    ContainerDb(config, "Config", "~/.pi/", "settings.json, auth.json, models.json, trust, sessions")    
+    ContainerDb(sessions, "Sessions", "*.jsonl", "会话 JSONL 文件（对话历史 + 元数据）")       
+                                                                                                         
+    Rel(dev, cli, "调用", "pi command")                                                                  
+    Rel(dev, sdk, "调用", "import")                                                                      
+    Rel(dev, rpc, "通信", "stdin/stdout JSONL")                                                          
+    Rel(cli, interactive, "启动")                                                                        
+    Rel(sdk, print, "启动")                                                                              
+    Rel(rpc, rpc_mode, "协议")                                                                           
+                                                                                                         
+    Rel(interactive, agent, "使用")                                                                      
+    Rel(agent, models, "调用 LLM")                                                                       
+    Rel(agent, auth, "获取凭证")                                                                         
+    Rel(models, providers, "工厂创建")                                                                   
+    Rel(models, apis, "调用")                                                                            
+    Rel(interactive, tui_engine, "渲染 UI")                                                              
+    Rel(interactive, harness, "会话管理")                                                                
+                                                                                                         
+    Rel(supervisor, rpc_mode, "管理实例")                                                                
+    Rel(supervisor, ipc, "通信")                                                                         
+    Rel(supervisor, storage, "持久化")                                                                   
+                                                                                                         
+    Rel(interactive, config, "读写")                                                                     
+    Rel(harness, sessions, "读写")
 ```
 
 ### Container 图详解

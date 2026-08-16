@@ -59,14 +59,15 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    A[prime( 当前 held_audio + 新块 )] --> B[prime_cache]
-    B --> C[构建 messages: history + user_content(frame, audios)]
-    C --> D["llama.chat_blocking(max_tokens=1)\ncache_prompt=True"]
+    A["prime(当前 held_audio + 新块)"] --> B[prime_cache]
+    B --> C["构建 messages:<br/>history + user_content(frame, audios)"]
+    C --> D["llama.chat_blocking<br/>(max_tokens=1, cache_prompt=True)"]
     D --> E{成功?}
-    E -->|是| F["打印 Primed cache (Xs)\n前缀进入 llama-server slot 缓存"]
-    E -->|否| G["打印 Cache priming failed\n忽略 —— 最终请求照常,只是全量 prefill"]
-    F --> H[最终 run_turn 请求命中缓存,只 prefill 尾部]
-    style G stroke-dasharray:5 5
+    E -->|是| F["打印 Primed cache (Xs)<br/>前缀进入 llama-server slot 缓存"]
+    E -->|否| G["打印 Cache priming failed<br/>忽略 —— 最终请求照常，只是全量 prefill"]
+    F --> H["最终 run_turn 请求命中缓存<br/>只 prefill 尾部"]
+    
+    style G stroke-dasharray: 5 5
 ```
 
 ### 解读

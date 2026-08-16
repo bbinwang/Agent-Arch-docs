@@ -258,25 +258,25 @@ sequenceDiagram
 ## 3.7 认证与授权流程
 
 ```mermaid
-flowchart TD
-    Req[HTTP 请求] --> Auth{认证中间件}
-    Auth -> IsPub{公开路径?<br/>/api/auth/login 等}
-    IsPub -->|是| Pass[放行]
-    IsPub -->|否| LoginReq{login_required?}
-    LoginReq -->|否| PassNoAuth[放行<br/>用 primary_admin_id]
-
-    LoginReq -->|是| HasSession{Session Cookie 有效?}
-    HasSession -->|是| Pass
-    HasSession -->|否| HasToken{Bearer Token?}
-    HasToken -->|否| Reject401[401 Unauthorized]
-    HasToken -->|是| VerifyToken[verify_api_token]
-    VerifyToken --> Scope{需要 scope?}
-    Scope -->|有权限| Pass
-    Scope -->|无权限| Reject403[403 Forbidden]
-
-    style Pass fill:#50C878,color:#fff
-    style Reject401 fill:#E74C3C,color:#fff
-    style Reject403 fill:#E74C3C,color:#fff
+flowchart TD                                                                                                                                                               
+      Req[HTTP 请求] --> Auth{认证中间件}                                                                                                                                    
+      Auth --> IsPub{公开路径?<br/>/api/auth/login 等}                                                                                                                       
+      IsPub -->|是| Pass[放行]                                                                                                                                               
+      IsPub -->|否| LoginReq{login_required?}                                                                                                                                
+      LoginReq -->|否| PassNoAuth[放行<br/>用 primary_admin_id]                                                                                                              
+                                                                                                                                                                             
+      LoginReq -->|是| HasSession{Session Cookie 有效?}                                                                                                                      
+      HasSession -->|是| Pass                                                                                                                                                
+      HasSession -->|否| HasToken{Bearer Token?}                                                                                                                             
+      HasToken -->|否| Reject401[401 Unauthorized]                                                                                                                           
+      HasToken -->|是| VerifyToken[verify_api_token]                                                                                                                         
+      VerifyToken --> Scope{需要 scope?}                                                                                                                                     
+      Scope -->|有权限| Pass                           
+      Scope -->|无权限| Reject403[403 Forbidden]                                                                                                                             
+                                                                                                                                                                             
+      style Pass fill:#50C878,color:#fff                                                                                                                                     
+      style Reject401 fill:#E74C3C,color:#fff                                                                                                                                
+      style Reject403 fill:#E74C3C,color:#fff
 ```
 
 **Token Scope 体系**（`auth.py`）：

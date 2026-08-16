@@ -146,7 +146,8 @@ LangGraph Agent 策略是系统最复杂的搜索策略，使用 LangChain 的 `
 
 ```mermaid
 flowchart TD
-    A[analyze_topic 入口] B[collector.reset 重置收集器]
+    A[analyze_topic 入口]
+        B[collector.reset 重置收集器]
     A --> B
     B --> C[_build_tools 构建工具列表]
     C --> D[_build_egress_context 计算策略上下文]
@@ -273,7 +274,8 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    A[BaseSearchEngine.run 入口] B[_verify_egress_scope 验证出口策略]
+    A[BaseSearchEngine.run 入口]
+        B[_verify_egress_scope 验证出口策略]
     A --> B
     B --> C{rate_tracker.enabled?}
     C -->|是| D[带重试执行 _run_with_retry]
@@ -391,7 +393,8 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    A[report_generator.generate_report 入口] B[分析搜索结果结构]
+    A[report_generator.generate_report 入口]
+        B[分析搜索结果结构]
     A --> B
     B --> C{模式判断}
     C -->|quick| D[_extract_synthesized_answer]
@@ -488,7 +491,8 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    A[ContentFetcher.fetch 入口] B[URLClassifier.classify 分类 URL]
+    A[ContentFetcher.fetch 入口]
+        B[URLClassifier.classify 分类 URL]
     A --> B
     B --> C{URL 类型?}
     C -->|arXiv| D[ArXivDownloader]
@@ -598,14 +602,15 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    A[用户登录请求 POST /auth/login] B[auth_routes.login]
+    A[用户登录请求 POST /auth/login]
+        B[auth_routes.login]
     A --> B
     B --> C[password_utils.validate_password]
     C --> D{密码强度验证}
     D -->|弱密码| E[返回错误]
     D -->|强密码| F[db_manager.open_user_database]
     F --> G{SQLCipher 解密}
-    G -->|失败| H[返回 "Invalid credentials"]
+    G -->|失败| H["返回 \"Invalid credentials\""]
     G -->|成功| I[创建用户会话]
     I --> J[session_password_store 存储密码]
     J --> K[session.username 设置]
@@ -698,7 +703,8 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    A[BackgroundJobScheduler.start] B[APScheduler 初始化]
+    A[BackgroundJobScheduler.start]
+        B[APScheduler 初始化]
     A --> B
     B --> C[加载所有订阅]
     C --> D[为每个订阅创建定时任务]
@@ -795,7 +801,8 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    A[队列处理器启动] B[queue_processor.start]
+    A[队列处理器启动]
+        B[queue_processor.start]
     A --> B
     B --> C[监听队列]
     C --> D{新研究请求?}
@@ -878,7 +885,8 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    A[VectorSearch 入口] B[查询文本]
+    A[VectorSearch 入口]
+        B[查询文本]
     A --> B
     B --> C[EmbeddingProvider.embed_query]
     C --> D[生成查询向量]
@@ -948,7 +956,8 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    A[SocketIOService 初始化] B[注册事件处理器]
+    A[SocketIOService 初始化]
+        B[注册事件处理器]
     A --> B
     B --> C[connect 事件]
     C --> D[认证检查]

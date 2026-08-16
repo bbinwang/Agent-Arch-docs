@@ -93,25 +93,25 @@ C4 模型是由 Simon Brown 提出的软件架构可视化方法，包含四个�
 上下文层描述系统与外部用户、外部系统的关系，回答"系统为谁服务、与谁交互"的问题。
 
 ```mermaid
-C4Context
-    title JoyAgent-JDGenie 系统上下文图
-
-    Person(user, "终端用户", "通过浏览器输入自然语言任务")
- Person(admin, "系统管理员", "负责模型配置、部署运维")
-
-    System(joyagent, "JoyAgent-JDGenie", "通用多智能体系统\n理解任务→规划分解→调用工具→输出结果")
-
-    SystemExt(llm, "大语言模型", "OpenAI兼容API\nGPT-4/Claude/DeepSeek等")
-    SystemExt(mcp_server, "外部MCP服务器", "第三方工具服务\n提供额外工具能力")
-    SystemExt(search_engine, "搜索引擎", "Bing/Jina/Sogou\n互联网信息检索")
-    SystemExt(email_service, "邮件服务", "SMTP/IMAP\n邮件收发能力")
-
-    Rel(user, joyagent, "输入任务/查看结果", "HTTPS/SSE")
-    Rel(admin, joyagent, "配置管理", "HTTPS")
-    Rel(joyagent, llm, "发送Prompt/接收推理", "HTTPS/JSON")
-    Rel(joyagent, mcp_server, "调用外部工具", "MCP Protocol")
-    Rel(joyagent, search_engine, "搜索互联网信息", "HTTPS/API")
-    Rel(joyagent, email_service, "发送邮件", "SMTP")
+C4Context                                                                                                                                                                  
+      title JoyAgent-JDGenie 系统上下文图                                                                                                                                    
+                                                                                                                                                                             
+      Person(user, "终端用户", "通过浏览器输入自然语言任务")                                                                                                                 
+      Person(admin, "系统管理员", "负责模型配置、部署运维")                                                                                                                  
+                                                                                                                                                                             
+      System(joyagent, "JoyAgent-JDGenie", "通用多智能体系统\n理解任务→规划分解→调用工具→输出结果")                                                                          
+                                                                                                                                                                             
+      System_Ext(llm, "大语言模型", "OpenAI兼容API\nGPT-4/Claude/DeepSeek等")                                                                                                
+      System_Ext(mcp_server, "外部MCP服务器", "第三方工具服务\n提供额外工具能力")
+      System_Ext(search_engine, "搜索引擎", "Bing/Jina/Sogou\n互联网信息检索")                                                                                               
+      System_Ext(email_service, "邮件服务", "SMTP/IMAP\n邮件收发能力")                                                                                                       
+                                                                                                                                                                             
+      Rel(user, joyagent, "输入任务/查看结果", "HTTPS/SSE")                                                                                                                  
+      Rel(admin, joyagent, "配置管理", "HTTPS")                                                                                                                              
+      Rel(joyagent, llm, "发送Prompt/接收推理", "HTTPS/JSON")                                                                                                                
+      Rel(joyagent, mcp_server, "调用外部工具", "MCP Protocol")                                                                                                              
+      Rel(joyagent, search_engine, "搜索互联网信息", "HTTPS/API")                                                                                                            
+      Rel(joyagent, email_service, "发送邮件", "SMTP")
 ```
 
 **详细说明：**
@@ -135,33 +135,35 @@ JoyAgent-JDGenie 的核心定位是一个**通用多智能体产品**，它处�
 容器层描述系统内部的主要可执行单元及其通信方式，回答"系统由哪些服务组成、如何交互"的问题。
 
 ```mermaid
-C4Container
-    title JoyAgent-JDGenie 容器图
-
-    Person(user, "终端用户")
-
-    System_Boundary(joyagent_sys, "JoyAgent 系统") {
-        Container(ui, "前端服务", "React 18 + TypeScript", "用户界面与SSE展示\n端口3000")
-        Container(backend, "后端服务", "Spring Boot 3 + Java 17", "Agent调度与LLM编排\n端口8080")
-        Container(tool, "工具服务", "Python 3.11 + FastAPI", "代码执行/搜索/报告\n端口1601")
- Container(mcp, "MCP客户端", "Python 3.11 + MCP SDK", "外部工具协议转换\n端口8188")
-    }
-
-    ContainerDb(sqlite, "SQLite/MySQL", "关系数据库", "文件元数据/模型信息")
-    ContainerDb(qdrant, "Qdrant", "向量数据库", "表结构语义向量")
-    ContainerDb(es, "Elasticsearch", "全文搜索引擎", "表字段关键词索引")
-    ContainerDb(cache, "S3/OSS", "对象存储", "生成文件持久化")
-
-    Rel(user, ui, "浏览器访问", "HTTPS")
-    Rel(ui, backend, "Agent请求", "SSE/JSON")
-    Rel(backend, tool, "工具调用", "HTTP/JSON")
-    Rel(backend, mcp, "MCP工具调用", "HTTP/JSON")
-    Rel(mcp, tool, "内部工具代理", "HTTP/JSON")
-    Rel(backend, sqlite, "数据读写", "JDBC")
-    Rel(tool, qdrant, "向量检索", "HTTP/gRPC")
-    Rel(tool, es, "全文检索", "HTTP/REST")
-    Rel(tool, cache, "文件存储", "HTTP/S3")
-    Rel(backend, llm, "LLM推理", "HTTPS/OpenAI-API")
+C4Container                                                                                                                                                                
+      title JoyAgent-JDGenie 容器图                                                                                                                                          
+                                                                                                                                                                             
+      Person(user, "终端用户")                                                                                                                                               
+                                                                                                                                                                             
+      System_Boundary(joyagent_sys, "JoyAgent 系统") {                                                                                                                       
+          Container(ui, "前端服务", "React 18 + TypeScript", "用户界面与SSE展示\n端口3000")
+          Container(backend, "后端服务", "Spring Boot 3 + Java 17", "Agent调度与LLM编排\n端口8080")                                                                          
+          Container(tool, "工具服务", "Python 3.11 + FastAPI", "代码执行/搜索/报告\n端口1601")                                                                               
+          Container(mcp, "MCP客户端", "Python 3.11 + MCP SDK", "外部工具协议转换\n端口8188")                                                                                 
+      }                                                                                                                                                                      
+                                                                                                                                                                             
+      System_Ext(llm, "大语言模型", "OpenAI兼容API\nGPT-4/Claude/DeepSeek等")                                                                                                
+                                                      
+      ContainerDb(sqlite, "SQLite/MySQL", "关系数据库", "文件元数据/模型信息")                                                                                               
+      ContainerDb(qdrant, "Qdrant", "向量数据库", "表结构语义向量")
+      ContainerDb(es, "Elasticsearch", "全文搜索引擎", "表字段关键词索引")                                                                                                   
+      ContainerDb(cache, "S3/OSS", "对象存储", "生成文件持久化")                                                                                                             
+                                                                                                                                                                             
+      Rel(user, ui, "浏览器访问", "HTTPS")                                                                                                                                   
+      Rel(ui, backend, "Agent请求", "SSE/JSON")                                                                                                                              
+      Rel(backend, tool, "工具调用", "HTTP/JSON")                                                                                                                            
+      Rel(backend, mcp, "MCP工具调用", "HTTP/JSON")                                                                                                                          
+      Rel(mcp, tool, "内部工具代理", "HTTP/JSON")                                                                                                                            
+      Rel(backend, sqlite, "数据读写", "JDBC")                                                                                                                               
+      Rel(tool, qdrant, "向量检索", "HTTP/gRPC")                                                                                                                             
+      Rel(tool, es, "全文检索", "HTTP/REST")                                                                                                                                 
+      Rel(tool, cache, "文件存储", "HTTP/S3")                                                                                                                                
+      Rel(backend, llm, "LLM推理", "HTTPS/OpenAI-API")
 ```
 
 **详细说明：**
@@ -1839,3 +1841,9 @@ graph TD
 > **最后更新：** 2026-07-24
 > **文档状态：** 完成
 > **字数统计：** 约 25,000 字
+
+---
+
+# ❤️ 制作不易，请我喝咖啡☕️关注我➕
+
+![promotion](../res/promotion.jpg)

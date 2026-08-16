@@ -24,62 +24,62 @@ C4 模型是由 Simon Brown 提出的软件架构可视化框架，通过四个�
 ### 2.1.1 Context 图
 
 ```mermaid
-C4Context
-    title Local Deep Research - 系统上下文图
-
-    Person(user, "研究人员/开发者", "使用 LDR 进行深度研究分析")
-    Person(admin, "系统管理员", "部署、配置、维护 LDR 实例")
-
-    System(ldr, "Local Deep Research", "AI 驱动的深度研究助手\n[本地优先 | 隐私保护 | 可扩展]", "Flask + LangGraph + SQLCipher + FAISS")
-
-    SystemExt(browser, "用户浏览器", "访问 Web UI 界面\n接收实时研究进度")
-    SystemExt(ollama, "Ollama / LM Studio", "本地 LLM 推理服务\n提供完全离线的 AI 能力")
-    SystemExt(openai, "OpenAI API", "云端 LLM 服务\nGPT-4 / GPT-4o 等模型")
-    SystemExt(anthropic, "Anthropic API", "云端 LLM 服务\nClaude 3.5 / Claude 4 等模型")
-    SystemExt(google_ai, "Google AI API", "云端 LLM 服务\nGemini 系列模型")
-    SystemExt(deepseek, "DeepSeek API", "云端 LLM 服务\nDeepSeek 系列模型")
-    SystemExt(openrouter, "OpenRouter", "LLM 聚合网关\n统一访问多个提供商")
-    SystemExt(xai, "xAI API", "云端 LLM 服务\nGrok 系列模型")
-    SystemExt(searxng, "SearXNG", "元搜索引擎\n聚合多个搜索引擎结果")
-    SystemExt(ddg, "DuckDuckGo", "通用网页搜索\n隐私友好搜索引擎")
-    SystemExt(google_search, "Google Search", "通用网页搜索\n通过 SerpAPI 访问")
-    SystemExt(brave, "Brave Search", "通用网页搜索\n独立搜索引擎")
-    SystemExt(arxiv, "ArXiv", "学术论文搜索\n物理/CS/数学等")
-    SystemExt(pubmed, "PubMed / NCBI", "生物医学文献\n学术论文搜索")
-    SystemExt(wikipedia, "Wikipedia", "百科知识搜索\n结构化知识检索")
-    SystemExt(github_search, "GitHub", "代码搜索\n开源代码检索")
-    SystemExt(semanticscholar, "Semantic Scholar", "学术搜索引擎\nAI 驱动的论文发现")
-
-    %% 用户与系统交互
-    Rel(user, ldr, "发起研究任务\n查看研究报告", "HTTPS / WebSocket")
-    Rel(admin, ldr, "配置系统\n监控状态", "HTTPS / CLI")
-
-    %% 系统与外部 LLM
-    Rel(ldr, ollama, "调用本地 LLM\n完全离线运行", "HTTP (localhost)")
-    Rel(ldr, openai, "调用 GPT 模型\n获取推理结果", "HTTPS / API Key")
-    Rel(ldr, anthropic, "调用 Claude 模型\n获取推理结果", "HTTPS / API Key")
-    Rel(ldr, google_ai, "调用 Gemini 模型\n获取推理结果", "HTTPS / API Key")
-    Rel(ldr, deepseek, "调用 DeepSeek 模型\n获取推理结果", "HTTPS / API Key")
-    Rel(ldr, openrouter, "调用聚合 LLM\n获取推理结果", "HTTPS / API Key")
-    Rel(ldr, xai, "调用 Grok 模型\n获取推理结果", "HTTPS / API Key")
-
-    %% 系统与外部搜索
-    Rel(ldr, searxng, "元搜索引擎查询\n聚合多源结果", "HTTPS / API Key")
-    Rel(ldr, ddg, "通用网页搜索\n隐私友好", "HTTPS")
-    Rel(ldr, google_search, "通用网页搜索\n覆盖面广", "HTTPS / SerpAPI Key")
-    Rel(ldr, brave, "通用网页搜索\n独立索引", "HTTPS / API Key")
-    Rel(ldr, arxiv, "学术论文搜索\n预印本论文", "HTTPS / 公开 API")
-    Rel(ldr, pubmed, "生物医学文献\n医学论文检索", "HTTPS / Entrez API")
-    Rel(ldr, wikipedia, "百科知识检索\n结构化知识", "HTTPS / 公开 API")
-    Rel(ldr, github_search, "代码搜索\n开源代码检索", "HTTPS / API Token")
-    Rel(ldr, semanticscholar, "学术搜索\nAI 驱动的论文发现", "HTTPS / 公开 API")
-
-    UpdateRelStyle(user, ldr, $offsetX="-40", $offsetY="0")
-    UpdateRelStyle(ldr, ollama, $offsetX="-20", $offsetY="20")
-    UpdateRelStyle(ldr, openai, $offsetX="0", $offsetY="-20")
-    UpdateRelStyle(ldr, anthropic, $offsetX="20", $offsetY="-20")
-    UpdateRelStyle(ldr, ddg, $offsetX="-40", $offsetY="0")
-    UpdateRelStyle(ldr, arxiv, $offsetX="40", $offsetY="0")
+C4Context                                                                                                                                                                  
+      title Local Deep Research - 系统上下文图                                                                                                                               
+                                                                                                                                                                             
+      Person(user, "研究人员/开发者", "使用 LDR 进行深度研究分析")                                                                                                           
+      Person(admin, "系统管理员", "部署、配置、维护 LDR 实例")                                                                                                               
+                                                                                                                                                                             
+      System(ldr, "Local Deep Research", "AI 驱动的深度研究助手\n[本地优先 | 隐私保护 | 可扩展]", "Flask + LangGraph + SQLCipher + FAISS")                                   
+                                                                                                                                                                             
+      System_Ext(browser, "用户浏览器", "访问 Web UI 界面\n接收实时研究进度")                                                                                                
+      System_Ext(ollama, "Ollama / LM Studio", "本地 LLM 推理服务\n提供完全离线的 AI 能力")       
+      System_Ext(openai, "OpenAI API", "云端 LLM 服务\nGPT-4 / GPT-4o 等模型")                                                                                               
+      System_Ext(anthropic, "Anthropic API", "云端 LLM 服务\nClaude 3.5 / Claude 4 等模型")                                                                                  
+      System_Ext(google_ai, "Google AI API", "云端 LLM 服务\nGemini 系列模型")                                                                                               
+      System_Ext(deepseek, "DeepSeek API", "云端 LLM 服务\nDeepSeek 系列模型")                                                                                               
+      System_Ext(openrouter, "OpenRouter", "LLM 聚合网关\n统一访问多个提供商")                                                                                               
+      System_Ext(xai, "xAI API", "云端 LLM 服务\nGrok 系列模型")                                                                                                             
+      System_Ext(searxng, "SearXNG", "元搜索引擎\n聚合多个搜索引擎结果")                                                                                                     
+      System_Ext(ddg, "DuckDuckGo", "通用网页搜索\n隐私友好搜索引擎")                                                                                                        
+      System_Ext(google_search, "Google Search", "通用网页搜索\n通过 SerpAPI 访问")                                                                                          
+      System_Ext(brave, "Brave Search", "通用网页搜索\n独立搜索引擎")                                                                                                        
+      System_Ext(arxiv, "ArXiv", "学术论文搜索\n物理/CS/数学等")                                                                                                             
+      System_Ext(pubmed, "PubMed / NCBI", "生物医学文献\n学术论文搜索")                                                                                                      
+      System_Ext(wikipedia, "Wikipedia", "百科知识搜索\n结构化知识检索")                                                                                                     
+      System_Ext(github_search, "GitHub", "代码搜索\n开源代码检索")                                                                                                          
+      System_Ext(semanticscholar, "Semantic Scholar", "学术搜索引擎\nAI 驱动的论文发现")                                                                                     
+                                                                                                                                                                             
+      %% 用户与系统交互                                                                                                                                                      
+      Rel(user, ldr, "发起研究任务\n查看研究报告", "HTTPS / WebSocket")                                                                                                      
+      Rel(admin, ldr, "配置系统\n监控状态", "HTTPS / CLI")                                                                                                                   
+                                                                                                                                                                             
+      %% 系统与外部 LLM                                                                                                                                                      
+      Rel(ldr, ollama, "调用本地 LLM\n完全离线运行", "HTTP (localhost)")                                                                                                     
+      Rel(ldr, openai, "调用 GPT 模型\n获取推理结果", "HTTPS / API Key")                                                                                                     
+      Rel(ldr, anthropic, "调用 Claude 模型\n获取推理结果", "HTTPS / API Key")                    
+      Rel(ldr, google_ai, "调用 Gemini 模型\n获取推理结果", "HTTPS / API Key")                                                                                               
+      Rel(ldr, deepseek, "调用 DeepSeek 模型\n获取推理结果", "HTTPS / API Key")                                                                                              
+      Rel(ldr, openrouter, "调用聚合 LLM\n获取推理结果", "HTTPS / API Key")                                                                                                  
+      Rel(ldr, xai, "调用 Grok 模型\n获取推理结果", "HTTPS / API Key")                                                                                                       
+                                                                                                                                                                             
+      %% 系统与外部搜索                                                                                                                                                      
+      Rel(ldr, searxng, "元搜索引擎查询\n聚合多源结果", "HTTPS / API Key")                                                                                                   
+      Rel(ldr, ddg, "通用网页搜索\n隐私友好", "HTTPS")                                                                                                                       
+      Rel(ldr, google_search, "通用网页搜索\n覆盖面广", "HTTPS / SerpAPI Key")                                                                                               
+      Rel(ldr, brave, "通用网页搜索\n独立索引", "HTTPS / API Key")                                                                                                           
+      Rel(ldr, arxiv, "学术论文搜索\n预印本论文", "HTTPS / 公开 API")                                                                                                        
+      Rel(ldr, pubmed, "生物医学文献\n医学论文检索", "HTTPS / Entrez API")                                                                                                   
+      Rel(ldr, wikipedia, "百科知识检索\n结构化知识", "HTTPS / 公开 API")                                                                                                    
+      Rel(ldr, github_search, "代码搜索\n开源代码检索", "HTTPS / API Token")                                                                                                 
+      Rel(ldr, semanticscholar, "学术搜索\nAI 驱动的论文发现", "HTTPS / 公开 API")                                                                                           
+                                                                                                                                                                             
+      UpdateRelStyle(user, ldr, $offsetX="-40", $offsetY="0")                                                                                                                
+      UpdateRelStyle(ldr, ollama, $offsetX="-20", $offsetY="20")                                                                                                             
+      UpdateRelStyle(ldr, openai, $offsetX="0", $offsetY="-20")                                                                                                              
+      UpdateRelStyle(ldr, anthropic, $offsetX="20", $offsetY="-20")                                                                                                          
+      UpdateRelStyle(ldr, ddg, $offsetX="-40", $offsetY="0")                                                                                                                 
+      UpdateRelStyle(ldr, arxiv, $offsetX="40", $offsetY="0")
 ```
 
 ### 2.1.2 Context 图说明
@@ -157,75 +157,75 @@ LLM 提供商通过统一的 `BaseLLMProvider` 接口接入，系统支持同时
 ### 2.2.1 Container 图
 
 ```mermaid
-C4Container
-    title Local Deep Research - 容器视图
-
-    Person(user, "用户", "研究人员/开发者")
-    Person(admin, "管理员", "系统运维")
-
-    System_Boundary(ldr_system, "Local Deep Research 系统边界") {
-        Container(web_app, "Flask Web 应用", "Flask 3.1 + Jinja2", "处理 HTTP 请求\n渲染 Web UI\n管理用户会话")
-
-        Container(socketio_svc, "Socket.IO 实时服务", "Flask-SocketIO", "研究进度实时推送\n状态变更通知\n日志流式输出")
-
-        Container(background_scheduler, "后台任务调度器", "APScheduler", "定时研究任务\n知识库维护\n缓存清理\n索引优化")
-
-        Container(mcp_server, "MCP Server", "Model Context Protocol", "AI Agent 集成接口\n供外部 Agent 调用")
-
-        ContainerDb(sqlcipher_db, "SQLCipher 数据库", "SQLCipher 4.5 + SQLAlchemy 2.0", "加密存储所有研究数据\n用户数据\n配置信息\n知识元数据")
-
-        ContainerDb(faiss_index, "FAISS 向量索引", "FAISS 1.8", "研究文档向量索引\n语义相似度检索\n知识库检索增强")
-
-        Container(search_system, "搜索系统", "AdvancedSearchSystem", "30+搜索引擎调度\n结果聚合与去重\n过滤器链处理\n质量评分")
-
-        Container(llm_framework, "LLM 框架", "LangChain + LangGraph", "14+ LLM 提供商管理\n研究状态机编排\n流式输出处理\n错误重试")
-
-        Container(security_gateway, "安全网关", "SSRF + Egress Policy", "出站请求安全控制\nSSRF 防护\n出口策略执行\n速率限制")
-
-        Container(doc_processor, "文档处理器", "Playwright + Crawl4AI", "网页内容提取\nPDF/Word/PPT 解析\nHTML 消毒\n报告生成")
-    }
-
-    SystemExt(ollama, "Ollama", "本地 LLM 服务")
-    SystemExt(openai_ext, "OpenAI", "云端 LLM")
-    SystemExt(anthropic_ext, "Anthropic", "云端 LLM")
-    SystemExt(search_apis, "搜索引擎 API", "30+ 外部搜索服务")
-
-    %% 用户交互
-    Rel(user, web_app, "访问 Web UI\n发起研究任务", "HTTPS")
-    Rel(user, socketio_svc, "接收实时进度", "WebSocket")
-    Rel(admin, web_app, "管理配置", "HTTPS")
-
-    %% 容器间交互
-    Rel(web_app, search_system, "发起搜索请求", "Python 函数调用")
-    Rel(web_app, llm_framework, "请求 LLM 分析", "Python 函数调用")
-    Rel(web_app, sqlcipher_db, "读写研究数据", "SQLAlchemy ORM")
-    Rel(web_app, faiss_index, "知识库检索", "Python 函数调用")
-
-    Rel(socketio_svc, web_app, "推送研究进度", "Python 函数调用")
-
-    Rel(search_system, security_gateway, "出站搜索请求", "Python 函数调用")
-    Rel(search_system, doc_processor, "网页内容提取", "Python 函数调用")
-    Rel(search_system, sqlcipher_db, "缓存搜索结果", "SQLAlchemy ORM")
-
-    Rel(llm_framework, security_gateway, "出站 LLM 请求", "Python 函数调用")
-    Rel(llm_framework, sqlcipher_db, "读写对话历史", "SQLAlchemy ORM")
-    Rel(llm_framework, faiss_index, "检索相关知识", "Python 函数调用")
-
-    Rel(background_scheduler, sqlcipher_db, "维护任务", "SQLAlchemy ORM")
-    Rel(background_scheduler, faiss_index, "索引优化", "Python 函数调用")
-
-    Rel(mcp_server, search_system, "搜索接口", "Python 函数调用")
-    Rel(mcp_server, llm_framework, "LLM 接口", "Python 函数调用")
-
-    %% 系统与外部交互
-    Rel(security_gateway, search_apis, "HTTP 搜索请求", "HTTPS + API Key")
-    Rel(security_gateway, ollama, "本地 LLM 调用", "HTTP (localhost)")
-    Rel(security_gateway, openai_ext, "OpenAI API 调用", "HTTPS + API Key")
-    Rel(security_gateway, anthropic_ext, "Anthropic API 调用", "HTTPS + API Key")
-
-    Rel(doc_processor, search_apis, "网页抓取", "HTTPS")
-
-    UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
+C4Container                                                                                                                                                                
+      title Local Deep Research - 容器视图                                                                                                                                   
+                                                                                                                                                                             
+      Person(user, "用户", "研究人员/开发者")                                                                                                                                
+      Person(admin, "管理员", "系统运维")                                                                                                                                    
+                                                                                                                                                                             
+      System_Boundary(ldr_system, "Local Deep Research 系统边界") {                                                                                                          
+          Container(web_app, "Flask Web 应用", "Flask 3.1 + Jinja2", "处理 HTTP 请求\n渲染 Web UI\n管理用户会话")                                                            
+                                                                                                                                                                             
+          Container(socketio_svc, "Socket.IO 实时服务", "Flask-SocketIO", "研究进度实时推送\n状态变更通知\n日志流式输出")                                                    
+                                                                                                                                                                             
+          Container(background_scheduler, "后台任务调度器", "APScheduler", "定时研究任务\n知识库维护\n缓存清理\n索引优化")                                                   
+                                                                                                  
+          Container(mcp_server, "MCP Server", "Model Context Protocol", "AI Agent 集成接口\n供外部 Agent 调用")                                                              
+                                                                                                  
+          ContainerDb(sqlcipher_db, "SQLCipher 数据库", "SQLCipher 4.5 + SQLAlchemy 2.0", "加密存储所有研究数据\n用户数据\n配置信息\n知识元数据")                            
+                                                                                                  
+          ContainerDb(faiss_index, "FAISS 向量索引", "FAISS 1.8", "研究文档向量索引\n语义相似度检索\n知识库检索增强")                                                        
+                                                                                                  
+          Container(search_system, "搜索系统", "AdvancedSearchSystem", "30+搜索引擎调度\n结果聚合与去重\n过滤器链处理\n质量评分")                                            
+                                                                                                  
+          Container(llm_framework, "LLM 框架", "LangChain + LangGraph", "14+ LLM 提供商管理\n研究状态机编排\n流式输出处理\n错误重试")                                        
+                                                                                                  
+          Container(security_gateway, "安全网关", "SSRF + Egress Policy", "出站请求安全控制\nSSRF 防护\n出口策略执行\n速率限制")                                             
+                                                                                                  
+          Container(doc_processor, "文档处理器", "Playwright + Crawl4AI", "网页内容提取\nPDF/Word/PPT 解析\nHTML 消毒\n报告生成")                                            
+      }                                                                                           
+                                                                                                                                                                             
+      System_Ext(ollama, "Ollama", "本地 LLM 服务")                                                                                                                          
+      System_Ext(openai_ext, "OpenAI", "云端 LLM")                                                                                                                           
+      System_Ext(anthropic_ext, "Anthropic", "云端 LLM")                                                                                                                     
+      System_Ext(search_apis, "搜索引擎 API", "30+ 外部搜索服务")                                                                                                            
+                                                                                                                                                                             
+      %% 用户交互                                                                                                                                                            
+      Rel(user, web_app, "访问 Web UI\n发起研究任务", "HTTPS")                                                                                                               
+      Rel(user, socketio_svc, "接收实时进度", "WebSocket")                                                                                                                   
+      Rel(admin, web_app, "管理配置", "HTTPS")                                                                                                                               
+                                                                                                                                                                             
+      %% 容器间交互                                                                                                                                                          
+      Rel(web_app, search_system, "发起搜索请求", "Python 函数调用")                                                                                                         
+      Rel(web_app, llm_framework, "请求 LLM 分析", "Python 函数调用")                                                                                                        
+      Rel(web_app, sqlcipher_db, "读写研究数据", "SQLAlchemy ORM")                                                                                                           
+      Rel(web_app, faiss_index, "知识库检索", "Python 函数调用")                                                                                                             
+                                                                                                                                                                             
+      Rel(socketio_svc, web_app, "推送研究进度", "Python 函数调用")                                                                                                          
+                                                                                                                                                                             
+      Rel(search_system, security_gateway, "出站搜索请求", "Python 函数调用")                                                                                                
+      Rel(search_system, doc_processor, "网页内容提取", "Python 函数调用")                        
+      Rel(search_system, sqlcipher_db, "缓存搜索结果", "SQLAlchemy ORM")                                                                                                     
+                                                                                                                                                                             
+      Rel(llm_framework, security_gateway, "出站 LLM 请求", "Python 函数调用")                                                                                               
+      Rel(llm_framework, sqlcipher_db, "读写对话历史", "SQLAlchemy ORM")                                                                                                     
+      Rel(llm_framework, faiss_index, "检索相关知识", "Python 函数调用")                                                                                                     
+                                                                                                                                                                             
+      Rel(background_scheduler, sqlcipher_db, "维护任务", "SQLAlchemy ORM")                                                                                                  
+      Rel(background_scheduler, faiss_index, "索引优化", "Python 函数调用")                                                                                                  
+                                                                                                                                                                             
+      Rel(mcp_server, search_system, "搜索接口", "Python 函数调用")                                                                                                          
+      Rel(mcp_server, llm_framework, "LLM 接口", "Python 函数调用")                                                                                                          
+                                                                                                                                                                             
+      %% 系统与外部交互                                                                                                                                                      
+      Rel(security_gateway, search_apis, "HTTP 搜索请求", "HTTPS + API Key")                                                                                                 
+      Rel(security_gateway, ollama, "本地 LLM 调用", "HTTP (localhost)")                                                                                                     
+      Rel(security_gateway, openai_ext, "OpenAI API 调用", "HTTPS + API Key")                                                                                                
+      Rel(security_gateway, anthropic_ext, "Anthropic API 调用", "HTTPS + API Key")                                                                                          
+                                                                                                                                                                             
+      Rel(doc_processor, search_apis, "网页抓取", "HTTPS")                                                                                                                   
+                                                                                                                                                                             
+      UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
 ```
 
 ### 2.2.2 Container 图说明
@@ -392,57 +392,57 @@ Web 层是用户请求的入口点，采用经典的 MVC 分层架构，但增�
 ### 2.3.2 搜索系统组件图
 
 ```mermaid
-C4Component
-    title 搜索系统组件图 - AdvancedSearchSystem 内部结构
-
-    Container_Boundary(search_sys, "搜索系统 (AdvancedSearchSystem)") {
-        Component(search_orchestrator, "搜索编排器", "SearchOrchestrator", "研究问题分解\n多引擎并行调度\n结果聚合排序")
-
-        Component(engine_registry, "引擎注册表", "SearchEngineRegistry", "引擎注册/发现\n引擎生命周期管理\n健康检查")
-
-        Component(strategy_factory, "策略工厂", "SearchStrategyFactory", "策略实例化\n策略配置加载\n策略缓存")
-
-        Component(filter_chain, "过滤器链", "FilterChain", "结果过滤管道\n可配置过滤器\n过滤链组合")
-
-        Component(result_aggregator, "结果聚合器", "ResultAggregator", "多引擎结果合并\n去重算法\n相关性排序")
-
-        Component(cache_manager, "缓存管理器", "SearchCacheManager", "结果缓存\n缓存失效\nLRU 策略")
-
-        Component(quality_scorer, "质量评分器", "QualityScorer", "内容质量评估\n域名信誉\n时效性评分")
-
-        ComponentEngines["搜索引擎实现"]
-
-        Component(ddg_engine, "DuckDuckGo", "DuckDuckGoEngine", "通用搜索")
-        Component(google_engine, "Google", "GoogleEngine", "通用搜索")
-        Component(arxiv_engine, "ArXiv", "ArXivEngine", "学术搜索")
-        Component(pubmed_engine, "PubMed", "PubMedEngine", "医学文献")
-        Component(searxng_engine, "SearXNG", "SearXNGEngine", "元搜索")
-        Component(wiki_engine, "Wikipedia", "WikipediaEngine", "百科搜索")
-        Component(github_engine, "GitHub", "GitHubEngine", "代码搜索")
-        Component(others_engine, "其他 20+ 引擎", "...", "Bing/Brave/Baidu/...")
-    }
-
-    Container_Ext(security_gw, "安全网关", "SSRF + Egress")
-    Container_Ext(doc_proc, "文档处理器", "Playwright + Crawl4AI")
-    Container_Ext(db, "SQLCipher 数据库", "SQLAlchemy")
-
-    Rel(search_orchestrator, engine_registry, "获取可用引擎列表")
-    Rel(search_orchestrator, strategy_factory, "获取搜索策略")
-    Rel(search_orchestrator, cache_manager, "查询缓存")
-
-    Rel(engine_registry, ComponentEngines, "管理引擎实例")
-
-    Rel(strategy_factory, ComponentEngines, "调用引擎搜索")
-
-    Rel(ComponentEngines, security_gw, "出站请求审查")
-    Rel(ComponentEngines, doc_proc, "网页内容提取")
-
-    Rel(search_orchestrator, filter_chain, "过滤搜索结果")
-    Rel(filter_chain, quality_scorer, "质量评分")
-    Rel(filter_chain, result_aggregator, "聚合结果")
-
-    Rel(result_aggregator, cache_manager, "缓存最终结果")
-    Rel(result_aggregator, db, "持久化搜索历史")
+C4Component                                                                                                                                                                
+      title 搜索系统组件图 - AdvancedSearchSystem 内部结构                                                                                                                   
+                                                                                                                                                                             
+      Container_Boundary(search_sys, "搜索系统 (AdvancedSearchSystem)") {                                                                                                    
+          Component(search_orchestrator, "搜索编排器", "SearchOrchestrator", "研究问题分解\n多引擎并行调度\n结果聚合排序")                                                   
+                                                                                                                                                                             
+          Component(engine_registry, "引擎注册表", "SearchEngineRegistry", "引擎注册/发现\n引擎生命周期管理\n健康检查")                                                      
+                                                                                                                                                                             
+          Component(strategy_factory, "策略工厂", "SearchStrategyFactory", "策略实例化\n策略配置加载\n策略缓存")                                                             
+                                                                                                  
+          Component(filter_chain, "过滤器链", "FilterChain", "结果过滤管道\n可配置过滤器\n过滤链组合")                                                                       
+                                                                                                  
+          Component(result_aggregator, "结果聚合器", "ResultAggregator", "多引擎结果合并\n去重算法\n相关性排序")                                                             
+                                                                                                  
+          Component(cache_manager, "缓存管理器", "SearchCacheManager", "结果缓存\n缓存失效\nLRU 策略")                                                                       
+                                                                                                  
+          Component(quality_scorer, "质量评分器", "QualityScorer", "内容质量评估\n域名信誉\n时效性评分")                                                                     
+                                                                                                  
+          Component(engines, "搜索引擎实现")                                                                                                                                 
+                                                                                                  
+          Component(ddg_engine, "DuckDuckGo", "DuckDuckGoEngine", "通用搜索")                                                                                                
+          Component(google_engine, "Google", "GoogleEngine", "通用搜索")                          
+          Component(arxiv_engine, "ArXiv", "ArXivEngine", "学术搜索")                                                                                                        
+          Component(pubmed_engine, "PubMed", "PubMedEngine", "医学文献")                                                                                                     
+          Component(searxng_engine, "SearXNG", "SearXNGEngine", "元搜索")                                                                                                    
+          Component(wiki_engine, "Wikipedia", "WikipediaEngine", "百科搜索")                                                                                                 
+          Component(github_engine, "GitHub", "GitHubEngine", "代码搜索")                                                                                                     
+          Component(others_engine, "其他 20+ 引擎", "...", "Bing/Brave/Baidu/...")                                                                                           
+      }                                                                                                                                                                      
+                                                                                                                                                                             
+      Container_Ext(security_gw, "安全网关", "SSRF + Egress")                                                                                                                
+      Container_Ext(doc_proc, "文档处理器", "Playwright + Crawl4AI")                                                                                                         
+      Container_Ext(db, "SQLCipher 数据库", "SQLAlchemy")                                                                                                                    
+                                                                                                                                                                             
+      Rel(search_orchestrator, engine_registry, "获取可用引擎列表")                                                                                                          
+      Rel(search_orchestrator, strategy_factory, "获取搜索策略")                                                                                                             
+      Rel(search_orchestrator, cache_manager, "查询缓存")                                                                                                                    
+                                                                                                                                                                             
+      Rel(engine_registry, engines, "管理引擎实例")                                                                                                                          
+                                                                                                                                                                             
+      Rel(strategy_factory, engines, "调用引擎搜索")                                                                                                                         
+                                                                                                  
+      Rel(engines, security_gw, "出站请求审查")                                                                                                                              
+      Rel(engines, doc_proc, "网页内容提取")                                                      
+                                                                                                                                                                             
+      Rel(search_orchestrator, filter_chain, "过滤搜索结果")                                                                                                                 
+      Rel(filter_chain, quality_scorer, "质量评分")                                                                                                                          
+      Rel(filter_chain, result_aggregator, "聚合结果")                                                                                                                       
+                                                                                                                                                                             
+      Rel(result_aggregator, cache_manager, "缓存最终结果")                                                                                                                  
+      Rel(result_aggregator, db, "持久化搜索历史")
 ```
 
 **搜索系统组件图说明**:
@@ -468,58 +468,58 @@ C4Component
 ### 2.3.3 LLM 组件图
 
 ```mermaid
-C4Component
-    title LLM 组件图 - LLM 框架内部结构
-
-    Container_Boundary(llm_fw, "LLM 框架") {
-        Component(provider_registry, "提供商注册表", "LLMProviderRegistry", "LLM 提供商注册/发现\n提供商配置管理\n健康检查")
-
-        Component(provider_factory, "提供商工厂", "LLMProviderFactory", "提供商实例化\n配置加载\n连接池管理")
-
-        Component(langgraph_engine, "LangGraph 引擎", "StateGraph", "研究状态机定义\n节点执行\n状态转换\n循环控制")
-
-        Component(prompt_manager, "提示管理器", "PromptManager", "提示模板库\n模板变量填充\n多语言提示\n提示版本管理")
-
-        Component(stream_handler, "流式处理器", "StreamHandler", "Token 流式接收\n增量解析\nSocketIO 推送\n缓冲管理")
-
-        Component(retry_handler, "重试处理器", "RetryHandler", "指数退避重试\n错误分类\n降级策略\n熔断器模式")
-
-        Component(token_counter, "Token 计数器", "TokenCounter", "Token 使用统计\n成本计算\n用量限额\n配额管理")
-
-        Component(output_parser, "输出解析器", "OutputParser", "结构化输出提取\nJSON/Markdown 解析\n错误恢复\n格式验证")
-
-        ComponentProviders["LLM 提供商实现"]
-
-        Component(openai_provider, "OpenAI", "OpenAIProvider", "GPT-4/GPT-4o")
-        Component(anthropic_provider, "Anthropic", "AnthropicProvider", "Claude 3.5/4")
-        Component(google_provider, "Google", "GoogleProvider", "Gemini 系列")
-        Component(ollama_provider, "Ollama", "OllamaProvider", "本地模型")
-        Component(deepseek_provider, "DeepSeek", "DeepSeekProvider", "DeepSeek 系列")
-        Component(openrouter_provider, "OpenRouter", "OpenRouterProvider", "聚合网关")
-        Component(others_provider, "其他 7+ 提供商", "...", "xAI/LM Studio/...")
-    }
-
-    Container_Ext(security_gw, "安全网关", "SSRF + Egress")
-    Container_Ext(socketio, "Socket.IO", "Flask-SocketIO")
-    Container_Ext(db, "SQLCipher 数据库", "SQLAlchemy")
-    Container_Ext(faiss, "FAISS 向量索引", "FAISS")
-
-    Rel(langgraph_engine, prompt_manager, "获取提示模板")
-    Rel(langgraph_engine, provider_factory, "调用 LLM 提供商")
-    Rel(langgraph_engine, stream_handler, "流式输出")
-    Rel(langgraph_engine, output_parser, "解析输出")
-    Rel(langgraph_engine, faiss, "知识库检索增强")
-
-    Rel(provider_factory, provider_registry, "获取提供商列表")
-    Rel(provider_registry, ComponentProviders, "管理提供商实例")
-
-    Rel(ComponentProviders, security_gw, "出站请求审查")
-    Rel(ComponentProviders, retry_handler, "错误重试")
-
-    Rel(stream_handler, socketio, "推送 Token", "WebSocket")
-    Rel(stream_handler, token_counter, "统计 Token")
-
-    Rel(output_parser, db, "持久化结果")
+C4Component                                                                                                                                                                
+      title LLM 组件图 - LLM 框架内部结构                                                                                                                                    
+                                                                                                                                                                             
+      Container_Boundary(llm_fw, "LLM 框架") {                                                                                                                               
+          Component(provider_registry, "提供商注册表", "LLMProviderRegistry", "LLM 提供商注册/发现\n提供商配置管理\n健康检查")                                               
+                                                                                                                                                                             
+          Component(provider_factory, "提供商工厂", "LLMProviderFactory", "提供商实例化\n配置加载\n连接池管理")                                                              
+                                                                                                                                                                             
+          Component(langgraph_engine, "LangGraph 引擎", "StateGraph", "研究状态机定义\n节点执行\n状态转换\n循环控制")                                                        
+                                                                                                  
+          Component(prompt_manager, "提示管理器", "PromptManager", "提示模板库\n模板变量填充\n多语言提示\n提示版本管理")                                                     
+                                                                                                  
+          Component(stream_handler, "流式处理器", "StreamHandler", "Token 流式接收\n增量解析\nSocketIO 推送\n缓冲管理")                                                      
+                                                                                                  
+          Component(retry_handler, "重试处理器", "RetryHandler", "指数退避重试\n错误分类\n降级策略\n熔断器模式")                                                             
+                                                                                                  
+          Component(token_counter, "Token 计数器", "TokenCounter", "Token 使用统计\n成本计算\n用量限额\n配额管理")                                                           
+                                                                                                  
+          Component(output_parser, "输出解析器", "OutputParser", "结构化输出提取\nJSON/Markdown 解析\n错误恢复\n格式验证")                                                   
+                                                                                                  
+          Component(providers, "LLM 提供商实现")                                                                                                                             
+                                                                                                  
+          Component(openai_provider, "OpenAI", "OpenAIProvider", "GPT-4/GPT-4o")                                                                                             
+          Component(anthropic_provider, "Anthropic", "AnthropicProvider", "Claude 3.5/4")         
+          Component(google_provider, "Google", "GoogleProvider", "Gemini 系列")                                                                                              
+          Component(ollama_provider, "Ollama", "OllamaProvider", "本地模型")                                                                                                 
+          Component(deepseek_provider, "DeepSeek", "DeepSeekProvider", "DeepSeek 系列")                                                                                      
+          Component(openrouter_provider, "OpenRouter", "OpenRouterProvider", "聚合网关")                                                                                     
+          Component(others_provider, "其他 7+ 提供商", "...", "xAI/LM Studio/...")                                                                                           
+      }                                                                                                                                                                      
+                                                                                                                                                                             
+      Container_Ext(security_gw, "安全网关", "SSRF + Egress")                                                                                                                
+      Container_Ext(socketio, "Socket.IO", "Flask-SocketIO")                                      
+      Container_Ext(db, "SQLCipher 数据库", "SQLAlchemy")                                                                                                                    
+      Container_Ext(faiss, "FAISS 向量索引", "FAISS")                                                                                                                        
+                                                                                                                                                                             
+      Rel(langgraph_engine, prompt_manager, "获取提示模板")                                                                                                                  
+      Rel(langgraph_engine, provider_factory, "调用 LLM 提供商")                                                                                                             
+      Rel(langgraph_engine, stream_handler, "流式输出")                                                                                                                      
+      Rel(langgraph_engine, output_parser, "解析输出")                                                                                                                       
+      Rel(langgraph_engine, faiss, "知识库检索增强")                                                                                                                         
+                                                                                                                                                                             
+      Rel(provider_factory, provider_registry, "获取提供商列表")                                                                                                             
+      Rel(provider_registry, providers, "管理提供商实例")                                                                                                                    
+                                                                                                                                                                             
+      Rel(providers, security_gw, "出站请求审查")                                                                                                                            
+      Rel(providers, retry_handler, "错误重试")                                                                                                                              
+                                                                                                                                                                             
+      Rel(stream_handler, socketio, "推送 Token", "WebSocket")                                                                                                               
+      Rel(stream_handler, token_counter, "统计 Token")                                                                                                                       
+                                                                                                                                                                             
+      Rel(output_parser, db, "持久化结果")
 ```
 
 **LLM 组件图说明**:

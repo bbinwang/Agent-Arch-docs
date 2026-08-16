@@ -298,17 +298,17 @@ graph LR
 ### Docker 部署
 
 ```mermaid
-graph TB
-    subgraph "Docker Container"
-        App[AsterMem App<br/>Python 3.11-slim]
-        Vol1[/data/ volume]
-        Vol2[/app/config.yaml/]
-    end
-    Port[:8768 → 8765]
-    App --> Vol1
-    App --> Vol2
-    App -.->|映射| Port
-    style App fill:#4A90D9,color:#fff
+graph TB                                                                                                                                                                   
+      subgraph "Docker Container"                       
+          App[AsterMem App<br/>Python 3.11-slim]                                                                                                                             
+          Vol1[/"data/ volume"/]                                                                                                                                             
+          Vol2[/"app/config.yaml"/]                                                                                                                                          
+      end                                                                                                                                                                    
+      Port[":8768 → 8765"]                                                                                                                                                   
+      App --> Vol1                                                                                                                                                           
+      App --> Vol2                                     
+      App -.->|映射| Port             
+      style App fill:#4A90D9,color:#fff
 ```
 
 ### Tauri 桌面应用

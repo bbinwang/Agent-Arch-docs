@@ -154,43 +154,45 @@ C4Component
 ### 4.1 Mermaid 图表
 
 ```mermaid
-C4Component
-    title Component Diagram — RAG Pipeline
-
-    Container_Boundary(rag, "RAG Pipeline Container") {
-        Component(pipeline, "Pipeline", "class", "流水线编排\nprepare() / run()")
-        Component(chunker, "Chunker", "class", "文本分块\nSentenceChunker\nchunk_size=2048\nchunk_overlap=200")
-        Component(embedder, "Embedder", "class", "嵌入生成\nDense (OpenAI)\nSparse (FastEmbed BM25)")
-        Component(vectordb, "VectorDB", "class", "向量存储\nQdrant 封装\n混合检索")
-        Component(reranker, "SimpleReranker", "class", "RRF 重排序\nk=60")
-        Component(llm_filter, "LLMFilter", "class", "LLM 文件过滤\n回答生成")
-        Component(parse, "Parse Strategy", "function", "parse_directory()\ncontents_from_cache()")
-    }
-
-    Container_Boundary(ext, "External Services") {
-        Component(openai, "OpenAI API", "openai", "嵌入 + 生成")
-        Component(qdrant, "Qdrant", "qdrant_client", "向量存储")
-        Component(llamaparse, "LlamaParse", "llama_cloud_services", "文档解析")
-        Component(diskcache, "DiskCache", "diskcache", "缓存")
-    }
-
-    Rel(pipeline, parse, "调用", "获取文档内容")
-    Rel(pipeline, chunker, "调用 chunk_texts()")
-    Rel(pipeline, embedder, "调用 embed_chunks()")
-    Rel(pipeline, embedder, "调用 sparse_embed_chunks()")
-    Rel(pipeline, vectordb, "调用 upload()")
-    Rel(pipeline, vectordb, "调用 configure_collection()")
-    Rel(pipeline, llm_filter, "调用 generate_filter()")
-    Rel(pipeline, llm_filter, "调用 generate_response()")
-    Rel(pipeline, vectordb, "调用 search()")
-    Rel(chunker, chunk, "使用", "chonkie.SentenceChunker")
-    Rel(embedder, openai, "embeddings.create()")
-    Rel(embedder, fastembed, "SparseTextEmbedding()")
-    Rel(vectordb, qdrant, "query_points()/upload_collection()")
-    Rel(vectordb, reranker, "调用 rerank()")
-    Rel(parse, llamaparse, "aparse()")
-    Rel(parse, diskcache, "读取")
-    Rel(llm_filter, openai, "responses.parse()")
+C4Component                                                                                                                                                                
+      title Component Diagram — RAG Pipeline                                                                                                                                 
+                                                                                                                                                                             
+      Container_Boundary(rag, "RAG Pipeline Container") {                                                                                                                    
+          Component(pipeline, "Pipeline", "class", "流水线编排\nprepare() / run()")                                                                                          
+          Component(chunker, "Chunker", "class", "文本分块\nSentenceChunker\nchunk_size=2048\nchunk_overlap=200")                                                            
+          Component(embedder, "Embedder", "class", "嵌入生成\nDense (OpenAI)\nSparse (FastEmbed BM25)")                                                                      
+          Component(vectordb, "VectorDB", "class", "向量存储\nQdrant 封装\n混合检索")                                                                                        
+          Component(reranker, "SimpleReranker", "class", "RRF 重排序\nk=60")                                                                                                 
+          Component(llm_filter, "LLMFilter", "class", "LLM 文件过滤\n回答生成")                                                                                              
+          Component(parse, "Parse Strategy", "function", "parse_directory()\ncontents_from_cache()")                                                                         
+      }                                                                                                                                                                      
+                                                                                                                                                                             
+      Container_Boundary(ext, "External Services") {                                                                                                                         
+          Component(openai, "OpenAI API", "openai", "嵌入 + 生成")                               
+          Component(qdrant, "Qdrant", "qdrant_client", "向量存储")                                                                                                           
+          Component(llamaparse, "LlamaParse", "llama_cloud_services", "文档解析")                                                                                            
+          Component(diskcache, "DiskCache", "diskcache", "缓存")                                                                                                             
+          Component(chunk, "Chonkie", "chonkie", "SentenceChunker 分块")                                                                                                     
+          Component(fastembed, "FastEmbed", "fastembed", "BM25 稀疏嵌入")                                                                                                    
+      }                                                                                                                                                                      
+                                                                                                                                                                             
+      Rel(pipeline, parse, "调用", "获取文档内容")                                                                                                                           
+      Rel(pipeline, chunker, "调用 chunk_texts()")                                               
+      Rel(pipeline, embedder, "调用 embed_chunks()")                                                                                                                         
+      Rel(pipeline, embedder, "调用 sparse_embed_chunks()")                                                                                                                  
+      Rel(pipeline, vectordb, "调用 upload()")                                                                                                                               
+      Rel(pipeline, vectordb, "调用 configure_collection()")                                                                                                                 
+      Rel(pipeline, llm_filter, "调用 generate_filter()")                                                                                                                    
+      Rel(pipeline, llm_filter, "调用 generate_response()")                                                                                                                  
+      Rel(pipeline, vectordb, "调用 search()")                                                                                                                               
+      Rel(chunker, chunk, "使用", "chonkie.SentenceChunker")                                                                                                                 
+      Rel(embedder, openai, "embeddings.create()")                                                                                                                           
+      Rel(embedder, fastembed, "SparseTextEmbedding()")                                                                                                                      
+      Rel(vectordb, qdrant, "query_points()/upload_collection()")                                                                                                            
+      Rel(vectordb, reranker, "调用 rerank()")                                                                                                                               
+      Rel(parse, llamaparse, "aparse()")                                                                                                                                     
+      Rel(parse, diskcache, "读取")                                                                                                                                          
+      Rel(llm_filter, openai, "responses.parse()")
 ```
 
 ### 4.2 组件说明
